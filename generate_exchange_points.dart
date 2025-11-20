@@ -22,6 +22,7 @@ void main() {
     results.add({
       'exchangeNumber': i,
       'rankBefore': result.currentRank,
+      'exchangeCountBefore': result.currentExchangeCount,
       'basePoints': result.expectedBasePoints,
       'rankUpBonus': result.expectedRankUpPoints,
       'totalPointsThisExchange': result.expectedPoints,
@@ -54,12 +55,13 @@ void main() {
   buffer.writeln();
   buffer.writeln('## 獲得ポイント詳細');
   buffer.writeln();
-  buffer.writeln('| 交換回数 | 交換前ランク | 基本ポイント | ランクアップボーナス | 今回獲得ポイント | 累計獲得ポイント | 交換後ランク |');
-  buffer.writeln('|---------|------------|------------|-------------------|----------------|----------------|------------|');
+  buffer.writeln('| 交換回数 | 交換前ランク | ランク内交換回数 | 基本ポイント | ランクアップボーナス | 今回獲得ポイント | 累計獲得ポイント | 交換後ランク |');
+  buffer.writeln('|---------|------------|----------------|------------|-------------------|----------------|----------------|------------|');
 
   for (final result in results) {
     buffer.writeln('| ${result['exchangeNumber']} | '
         'ランク${result['rankBefore']} | '
+        '${result['exchangeCountBefore']}回目 | '
         '${result['basePoints']} | '
         '${result['rankUpBonus']} | '
         '${result['totalPointsThisExchange']} | '
